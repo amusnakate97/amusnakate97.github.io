@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amruta Nakate — Senior Data Engineer</title>
+<meta name="description" content="Amruta Nakate — Senior Data Engineer. Spark, Scala, AWS, distributed data systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FAFAF8;
+    --bg-alt:#F2F1EC;
+    --card:#FFFFFF;
+    --ink:#15171C;
+    --ink-soft:#5B606B;
+    --ink-faint:#9298A3;
+    --border:#E7E5DE;
+    --accent:#3B4CF0;
+    --accent-dark:#2B39C4;
+    --accent-tint:#EBEDFE;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter', -apple-system, Segoe UI, sans-serif;
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{ font-family:'Space Grotesk', 'Inter', sans-serif; }
+  a{ color:var(--accent); }
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:3px;
+    border-radius:3px;
+  }
+  .wrap{ max-width:980px; margin:0 auto; padding:0 28px; }
+
+  /* Nav */
+  .nav{
+    position:sticky; top:0; z-index:30;
+    background:rgba(250,250,248,0.9);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-inner{
+    max-width:980px; margin:0 auto; padding:16px 28px;
+    display:flex; justify-content:space-between; align-items:center; gap:14px; flex-wrap:wrap;
+  }
+  .logo{
+    font-weight:700; font-size:18px; color:var(--ink);
+    display:flex; align-items:center; gap:8px; text-decoration:none;
+  }
+  .logo-mark{
+    width:32px;height:32px;border-radius:8px;
+    background:var(--accent); color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-size:13px; font-weight:700;
+  }
+  .nav-links{ display:flex; gap:26px; flex-wrap:wrap; }
+  .nav-links a{
+    color:var(--ink-soft); text-decoration:none; font-size:14px; font-weight:500;
+  }
+  .nav-links a:hover{ color:var(--ink); }
+
+  /* Hero */
+  .hero{ padding:76px 0 60px; }
+  .badge{
+    display:inline-flex; align-items:center; gap:7px;
+    background:var(--accent-tint); color:var(--accent-dark);
+    font-size:13px; font-weight:600;
+    padding:6px 14px; border-radius:100px; margin-bottom:26px;
+  }
+  .badge-dot{
+    width:7px; height:7px; border-radius:50%; background:#2FBF71;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.3fr 0.7fr; gap:48px; align-items:center;
+  }
+  .hero-title{
+    font-size:clamp(32px, 4.6vw, 50px);
+    font-weight:700; line-height:1.08; letter-spacing:-.01em;
+    margin:0 0 20px;
+  }
+  .hero-title .accent-text{ color:var(--accent); }
+  .hero-sub{
+    color:var(--ink-soft); font-size:17px; max-width:480px; margin:0 0 30px;
+  }
+  .hero-actions{ display:flex; gap:12px; flex-wrap:wrap; }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 22px; border-radius:9px; font-size:14.5px; font-weight:600;
+    text-decoration:none; border:1px solid transparent; transition:transform .15s ease, background .15s ease, border-color .15s ease;
+  }
+  .btn-primary{ background:var(--accent); color:#fff; }
+  .btn-primary:hover{ background:var(--accent-dark); transform:translateY(-1px); }
+  .btn-ghost{ border-color:var(--border); color:var(--ink); }
+  .btn-ghost:hover{ border-color:var(--accent); color:var(--accent); transform:translateY(-1px); }
+
+  .avatar-wrap{ display:flex; justify-content:center; }
+  .avatar{
+    width:200px; height:200px; border-radius:22px;
+    background:linear-gradient(155deg, var(--accent) 0%, var(--accent-dark) 100%);
+    display:flex; align-items:center; justify-content:center;
+    color:#fff; font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:56px;
+    box-shadow:0 18px 40px -14px rgba(59,76,240,0.45);
+  }
+
+  /* Stats */
+  .stats{
+    border-top:1px solid var(--border); border-bottom:1px solid var(--border);
+    padding:34px 0;
+  }
+  .stats-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:20px; text-align:center;
+  }
+  .stat-num{
+    font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:28px; color:var(--ink);
+  }
+  .stat-label{ color:var(--ink-soft); font-size:13px; margin-top:4px; }
+
+  section{ padding:64px 0; scroll-margin-top:74px; }
+  .eyebrow{
+    font-size:13px; font-weight:600; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--accent); margin-bottom:10px;
+  }
+  .section-title{
+    font-size:clamp(24px,3vw,32px); font-weight:700; margin:0 0 40px; letter-spacing:-.01em;
+  }
+
+  /* About */
+  .about-text{ color:var(--ink-soft); font-size:17px; max-width:680px; margin-bottom:24px; }
+  .tag-row{ display:flex; gap:10px; flex-wrap:wrap; }
+  .tag{
+    background:var(--bg-alt); border:1px solid var(--border); color:var(--ink);
+    font-size:13px; padding:7px 13px; border-radius:7px;
+  }
+
+  /* Skills */
+  .skills-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+  .skill-card{
+    background:var(--card); border:1px solid var(--border); border-radius:14px; padding:22px;
+  }
+  .skill-icon{
+    width:38px;height:38px;border-radius:9px; background:var(--accent-tint); color:var(--accent-dark);
+    display:flex; align-items:center; justify-content:center; font-weight:700; font-size:15px; margin-bottom:14px;
+  }
+  .skill-card h3{ font-size:16px; margin:0 0 8px; }
+  .skill-card p{ color:var(--ink-soft); font-size:14px; margin:0; line-height:1.6; }
+
+  /* Experience timeline */
+  .timeline-item{
+    display:grid; grid-template-columns:150px 1fr; gap:24px;
+    padding-bottom:36px; border-bottom:1px solid var(--border); margin-bottom:36px;
+  }
+  .timeline-item:last-child{ border-bottom:none; margin-bottom:0; padding-bottom:0; }
+  .tl-dates{ color:var(--ink-faint); font-size:13px; padding-top:3px; }
+  .tl-title{ font-size:18px; font-weight:700; margin:0 0 4px; }
+  .tl-company{ color:var(--accent-dark); font-size:14.5px; margin-bottom:12px; font-weight:500; }
+  .tl-desc{ color:var(--ink-soft); font-size:15px; margin:0 0 12px; }
+  .tl-tags{ display:flex; gap:8px; flex-wrap:wrap; }
+  .tl-tags span{
+    font-size:12px; background:var(--bg-alt); border:1px solid var(--border); padding:4px 10px; border-radius:6px; color:var(--ink-soft);
+  }
+
+  /* Selected work */
+  .work-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  .work-card{
+    background:var(--card); border:1px solid var(--border); border-radius:14px; padding:24px;
+  }
+  .work-num{ color:var(--ink-faint); font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:13px; margin-bottom:10px; }
+  .work-card h3{ font-size:17px; margin:0 0 10px; }
+  .work-card p{ color:var(--ink-soft); font-size:14.5px; margin:0 0 14px; }
+  .work-outcome{
+    display:inline-flex; align-items:center; gap:6px;
+    background:var(--accent-tint); color:var(--accent-dark); font-size:12.5px; font-weight:600;
+    padding:6px 12px; border-radius:7px;
+  }
+
+  /* Contact */
+  .contact-card{
+    background:var(--ink); color:#fff; border-radius:20px; padding:48px 40px;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:24px;
+  }
+  .contact-card h2{ font-size:28px; margin:0 0 8px; }
+  .contact-card p{ color:#B9BCC5; margin:0; font-size:15px; }
+  .contact-info{ display:flex; flex-direction:column; gap:10px; }
+  .contact-info a{ color:#fff; text-decoration:none; font-size:14.5px; }
+  .contact-info a:hover{ text-decoration:underline; }
+  .contact-actions{ display:flex; gap:12px; flex-wrap:wrap; }
+  .contact-card .btn-primary{ background:#fff; color:var(--ink); }
+  .contact-card .btn-primary:hover{ background:#EDEDED; }
+  .contact-card .btn-ghost{ border-color:#3A3D45; color:#fff; }
+  .contact-card .btn-ghost:hover{ border-color:#fff; }
+
+  footer{
+    text-align:center; padding:36px 20px 46px; color:var(--ink-faint); font-size:13px;
+  }
+
+  @media (max-width:820px){
+    .hero-grid{ grid-template-columns:1fr; text-align:center; }
+    .hero-sub{ margin-left:auto; margin-right:auto; }
+    .hero-actions{ justify-content:center; }
+    .avatar{ width:150px; height:150px; font-size:42px; }
+    .stats-grid{ grid-template-columns:repeat(2,1fr); gap:24px; }
+    .skills-grid{ grid-template-columns:1fr 1fr; }
+    .timeline-item{ grid-template-columns:1fr; gap:6px; }
+    .work-grid{ grid-template-columns:1fr; }
+    .contact-card{ flex-direction:column; align-items:flex-start; text-align:left; }
+  }
+  @media (max-width:520px){
+    .skills-grid{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="#hero"><span class="logo-mark">AN</span> Amruta Nakate</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="badge"><span class="badge-dot"></span> Available for opportunities</span>
+      <h1 class="hero-title">Building data pipelines <span class="accent-text">that scale.</span></h1>
+      <p class="hero-sub">Senior Data Engineer · 6+ Years · Spark · Scala · AWS — turning high-volume, messy data into infrastructure other teams can build on.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#work">View Work</a>
+        <a class="btn btn-ghost" href="#contact">Get in Touch</a>
+        <a class="btn btn-ghost" href="./Amruta_Nakate_Resume.pdf" download>Resume</a>
+      </div>
+    </div>
+    <div class="avatar-wrap">
+      <div class="avatar" aria-hidden="true">
+        <svg width="84" height="84" viewBox="0 0 84 84" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="20" y="24" width="44" height="30" rx="3" stroke="#fff" stroke-width="3"/>
+          <line x1="27" y1="32" x2="50" y2="32" stroke="#fff" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>
+          <line x1="27" y1="39" x2="57" y2="39" stroke="#fff" stroke-width="2.5" stroke-linecap="round" opacity="0.55"/>
+          <line x1="27" y1="46" x2="44" y2="46" stroke="#fff" stroke-width="2.5" stroke-linecap="round" opacity="0.55"/>
+          <path d="M13 60H71L66 66H18L13 60Z" stroke="#fff" stroke-width="3" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="stats">
+  <div class="wrap stats-grid">
+    <div><div class="stat-num">6+</div><div class="stat-label">Years experience</div></div>
+    <div><div class="stat-num">1TB+</div><div class="stat-label">Data processed</div></div>
+    <div><div class="stat-num">50+</div><div class="stat-label">Production workflows</div></div>
+    <div><div class="stat-num">5+</div><div class="stat-label">Dashboards powered</div></div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap">
+    <div class="eyebrow">About</div>
+    <h2 class="section-title">Data engineer, problem-first thinker.</h2>
+    <p class="about-text">
+      I'm a Senior Data Engineer based in the SF Bay Area (open to remote) with 6+ years building scalable
+      distributed data systems at Visa. I specialize in Spark and Scala pipelines that turn
+      high-volume, messy data into reliable infrastructure — the foundation that lets
+      analytics, ML, and AI-driven products get built on top with confidence.
+    </p>
+    <div class="tag-row">
+      <span class="tag">Apache Spark</span>
+      <span class="tag">Scala</span>
+      <span class="tag">AWS</span>
+      <span class="tag">Airflow</span>
+      <span class="tag">Snowflake</span>
+      <span class="tag">dbt</span>
+      <span class="tag">Databricks</span>
+      <span class="tag">Kubernetes</span>
+      <span class="tag">Generative AI</span>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="eyebrow">Technical Expertise</div>
+    <h2 class="section-title">Built with the right tools.</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon">{ }</div>
+        <h3>Languages</h3>
+        <p>Python, Scala, SQL, Java</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">DE</div>
+        <h3>Data Engineering</h3>
+        <p>Apache Spark, PySpark, Hadoop, Kafka, Airflow, AWS Glue, dbt, Databricks, ETL</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">☁</div>
+        <h3>Cloud &amp; Data</h3>
+        <p>AWS, Snowflake, Docker, Kubernetes, MySQL, MongoDB, Cassandra</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">ML</div>
+        <h3>ML &amp; Analytics</h3>
+        <p>Pandas, NumPy, Scikit-learn, TensorFlow, LLM Applications</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">◫</div>
+        <h3>Visualization</h3>
+        <p>Tableau, Power BI, MS Excel</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">✓</div>
+        <h3>Practices</h3>
+        <p>System Design, Data Modeling, CI/CD, Unit Testing</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="eyebrow">Career Timeline</div>
+    <h2 class="section-title">Where I've built things.</h2>
+
+    <div class="timeline-item">
+      <div class="tl-dates">Oct 2023 – Oct 2026</div>
+      <div>
+        <div class="tl-title">Data Scientist (Data Engineering)</div>
+        <div class="tl-company">Visa Inc., San Francisco, CA</div>
+        <p class="tl-desc">Designed scalable Spark/Scala ETL pipelines transforming B2B data from 4+ enterprise systems into analytics-ready datasets, powering 5+ business-critical dashboards, and built an AI-driven conversational interface for natural-language segment creation.</p>
+        <div class="tl-tags"><span>Spark</span><span>Scala</span><span>Generative AI</span></div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="tl-dates">Sept 2022 – Oct 2023</div>
+      <div>
+        <div class="tl-title">Senior Data Engineer</div>
+        <div class="tl-company">Visa Inc., San Francisco, CA</div>
+        <p class="tl-desc">Optimized Spark/Scala pipelines processing ~1TB of historical transaction data, built pipelines for an automated scoring framework, and implemented Airflow DAGs supporting 50+ production workflows.</p>
+        <div class="tl-tags"><span>Spark</span><span>Airflow</span><span>AWS</span></div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="tl-dates">May 2022 – Jul 2022</div>
+      <div>
+        <div class="tl-title">Machine Learning Software Engineer Intern</div>
+        <div class="tl-company">Coupa, Cincinnati, OH</div>
+        <p class="tl-desc">Optimized K-means clustering for item similarity, improving cluster quality 20–30%, and built a PCA-based dimensionality reduction pipeline retaining 85–95% explained variance.</p>
+        <div class="tl-tags"><span>K-means</span><span>PCA</span><span>Python</span></div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="tl-dates">Jul 2019 – Apr 2021</div>
+      <div>
+        <div class="tl-title">Software Engineer</div>
+        <div class="tl-company">Persistent Systems, Pune, India</div>
+        <p class="tl-desc">Built AWS Glue ETL pipelines and Tableau dashboards for manufacturing quality analytics, supporting a 70% reduction in defects, and built validation frameworks for a Snowflake migration.</p>
+        <div class="tl-tags"><span>AWS Glue</span><span>Tableau</span><span>Snowflake</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="eyebrow">Selected Work</div>
+    <h2 class="section-title">Systems that shipped.</h2>
+    <div class="work-grid">
+      <div class="work-card">
+        <div class="work-num">01</div>
+        <h3>B2B Segmentation Platform Integration</h3>
+        <p>Integrated 4+ enterprise B2B data sources into an existing segmentation platform, building scalable ETL workflows for self-service audience creation.</p>
+        <span class="work-outcome">Millions of records processed</span>
+      </div>
+      <div class="work-card">
+        <div class="work-num">02</div>
+        <h3>AI Conversational Segment Interface</h3>
+        <p>Designed a natural-language interface for defining target segments, integrating AI capabilities with existing platform services to automate segment creation.</p>
+        <span class="work-outcome">Automated workflow</span>
+      </div>
+      <div class="work-card">
+        <div class="work-num">03</div>
+        <h3>Automated Scoring Framework</h3>
+        <p>Built scalable pipelines combining consumer- and card-level (PAN) insights into behavioral scores that enhanced customer segmentation.</p>
+        <span class="work-outcome">Enhanced targeting</span>
+      </div>
+      <div class="work-card">
+        <div class="work-num">04</div>
+        <h3>Historical Transaction Pipeline</h3>
+        <p>Processed ~1TB of historical transaction and campaign data through performance-tuned Spark pipelines, improving scalability and execution efficiency.</p>
+        <span class="work-outcome">1TB+ transformed</span>
+      </div>
+      <div class="work-card">
+        <div class="work-num">05</div>
+        <h3>Manufacturing Quality Analytics</h3>
+        <p>Built AWS Glue pipelines and Tableau dashboards to identify manufacturing defect patterns at Persistent Systems.</p>
+        <span class="work-outcome">70% defect reduction</span>
+      </div>
+      <div class="work-card">
+        <div class="work-num">06</div>
+        <h3>Snowflake Migration Validation</h3>
+        <p>Built Python-based data validation frameworks to automate quality checks during a large-scale Snowflake migration.</p>
+        <span class="work-outcome">Improved data reliability</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-card">
+      <div>
+        <h2>Let's build something reliable together.</h2>
+        <p>Open to Senior Data Engineer, ML Engineer, and Software Engineer roles — SF Bay Area or remote.</p>
+      </div>
+      <div class="contact-info">
+        <a href="mailto:amusnakate97@gmail.com">amusnakate97@gmail.com</a>
+        <a href="https://linkedin.com/in/amruta-nakate" target="_blank" rel="noopener">linkedin.com/in/amruta-nakate</a>
+      </div>
+      <div class="contact-actions">
+        <a class="btn btn-primary" href="mailto:amusnakate97@gmail.com">Email Me</a>
+        <a class="btn btn-ghost" href="./Amruta_Nakate_Resume.pdf" download>Download Resume</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>Amruta Nakate — SF Bay Area · Open to remote</footer>
+
+</body>
+</html>
